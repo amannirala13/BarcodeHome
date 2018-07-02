@@ -11,7 +11,7 @@ import java.io.IOException;
 
 /**
  *
- * @author hp
+ * @author Aman Nirala
  */
 public class logRead {
     public static String DataCapture(String logPath)throws IOException
