@@ -664,12 +664,13 @@ public class BarcodeHome extends javax.swing.JFrame {
         
         try (FileWriter updater = new FileWriter(logPath)) 
         {
-            
-          // BufferedWriter bw = new BufferedWriter(updater);
-           //PrintWriter file = new PrintWriter(bw);
-           //file.println(valueText.getText());
-           updater.write(logRead.DataCapture(logPath)+"\n"+(valueText.getText()));
-           System.out.println("File Updated");
+          String data = (logRead.DataCapture(logPath))+"\n"+valueText.getText();
+            System.out.println(data);
+            for(int i=0; i<data.length();i++)
+            {
+                updater.append(data.charAt(i));
+            }
+            System.out.println("File Updated");
         }
         catch(IOException ex)
         {
