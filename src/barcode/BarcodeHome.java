@@ -11,11 +11,13 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.print.PrintException;
@@ -663,13 +665,11 @@ public class BarcodeHome extends javax.swing.JFrame {
         try (FileWriter updater = new FileWriter(logPath)) 
         {
             
-            String prevData = logReader(logPath);
-            String data = prevData+"\n"+valueText.getText();
-            System.out.println(data);
-            for(int i=0; i<data.length();i++)
-            {
-                updater.write(data.charAt(i));
-            }
+          // BufferedWriter bw = new BufferedWriter(updater);
+           //PrintWriter file = new PrintWriter(bw);
+           //file.println(valueText.getText());
+           updater.write(logRead.DataCapture(logPath)+"\n"+(valueText.getText()));
+           System.out.println("File Updated");
         }
         catch(IOException ex)
         {
